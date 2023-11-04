@@ -26,7 +26,7 @@
 //     }
 // });a
 
-const myInterval = setInterval(myInterval, 1000)
+const myInterval = setInterval(changeComment, 1000)
 function changeComment() {
 
     var second = document.querySelector("ytd-comment-thread-renderer:nth-child(2)")
