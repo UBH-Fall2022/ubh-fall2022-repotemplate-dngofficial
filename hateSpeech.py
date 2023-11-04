@@ -1,4 +1,3 @@
-import requests
 from transformers import pipeline
 API_TOKEN="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"
 API_URL = "https://api-inference.huggingface.co/models/michellejieli/inappropriate_text_classifier"
