@@ -26,6 +26,5 @@ def writeFile(dict_in,fileName):
 		newFile.write(json_obj)
 output = query("Hi every")###This will be the input for the com
 new_dict=getScore(output)
-#print(new_dict)
-##json_file="BigBirtha.json"
-##writeFile(new_dict,json_file)##
+json_file="{}.json".format('HATESPEECH')
+writeFile(new_dict,json_file)
