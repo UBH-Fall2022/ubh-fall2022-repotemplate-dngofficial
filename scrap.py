@@ -17,20 +17,22 @@ def get_comments(youtube, video_id, comments=[], token=''):
         return comments
 
 
-config = open("config.json", "r")
+def getCommentData(video_id):
+    config = open("config.json", "r")
 
-api_key = json.load(config)
-api_key = api_key["APIKEY"]
-video_id = "rwHgE7CEnpE"
+    api_key = json.load(config)
+    api_key = api_key["APIKEY"]
 
-youtube = build('youtube', 'v3', developerKey=api_key)
-comment_threads = get_comments(youtube, video_id)
-data = {}
-for i in range(len(comment_threads)):
-    data["comment#" + str(i+1)] = comment_threads[i]
+    config.close()
 
-jsonFile = open("comments.json", "w+")
-json_string = json.dumps(data, indent=4)
-jsonFile.write(json_string)
-jsonFile.close()
-print("Completed")
+    youtube = build('youtube', 'v3', developerKey=api_key)
+    comment_threads = get_comments(youtube, video_id)
+    data = {}
+    for i in range(len(comment_threads)):
+        data["comment#" + str(i+1)] = comment_threads[i]
+
+    jsonFile = open("comments.json", "w+")
+    json_string = json.dumps(data, indent=4)
+    jsonFile.write(json_string)
+    jsonFile.close()
+    return len(data)
