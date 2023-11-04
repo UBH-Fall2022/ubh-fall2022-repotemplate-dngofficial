@@ -1,18 +1,23 @@
 body {
     width: 200px;
     padding: 10px;
-  }
-  
-  h1 {
+}
+
+h1 {
     font-size: 16px;
     text-align: center;
-  }
-  
-  label {
+}
+
+label {
     display: block;
     margin-top: 10px;
-  }
-  
-  input[type="range"] {
-    width: 100%;
-  }
+}
+
+input[type="range"] {width: 100%;}
+
+#classification-result {
+    font-weight: bold;
+    text-align: center;
+    margin-top: 20px;
+    color: red; /* Adjust styling as needed */
+}
