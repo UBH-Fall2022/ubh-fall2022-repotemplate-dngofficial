@@ -18,7 +18,7 @@ def getScore(in_json):
         # [[{},{}]]
         for dict_in in arr:
             NSFW_SCORE = dict_in[1]['score']
-            score_list.apend(NSFW_SCORE)
+            score_list.append(NSFW_SCORE)
     return score_list
 
 
