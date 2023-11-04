@@ -1,4 +1,5 @@
 from googletrans import Translator
+import json
 
 
 def translateComments(query):

@@ -34,3 +34,19 @@ comments.forEach((comment) => {
         comment.parentNode.insertBefore(warningBox, comment);
     }
 });
+
+function changeComment() {
+
+    var second = document.querySelector("ytd-comment-thread-renderer:nth-child(2)")
+    var commentRenderer = second.firstElementChild
+    var mainBody = commentRenderer.children[2]
+    var text = mainBody.children[1].children[1].children[1].children[0].children[1]
+    var text_str = text.innerHTML
+
+    if (second != null) {
+        console.log(text_str)
+        text.innerHTML = "im boutta **"
+        clearInterval(myInterval);
+    }
+
+}
