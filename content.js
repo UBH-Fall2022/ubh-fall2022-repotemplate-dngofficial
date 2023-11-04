@@ -19,14 +19,14 @@
 //     });
 // }
 
-// // Add a click event listener to the "View" button
+// Add a click event listener to the "View" button
 // document.addEventListener('click', function (e) {
 //     if (e.target && e.target.tagName === 'BUTTON') {
 //         revealComment(e.target.dataset.commentId);
 //     }
-// });
+// });a
 
-const myInterval = setInterval(changeComment, 1000)
+const myInterval = setInterval(myInterval, 1000)
 function changeComment() {
 
     var second = document.querySelector("ytd-comment-thread-renderer:nth-child(2)")
@@ -36,33 +36,17 @@ function changeComment() {
     var text_str = text.innerHTML
 
     if (second != null) {
+
+        console.log(second)
+        console.log(commentRenderer)
+        console.log(mainBody)
+        console.log(text)
         console.log(text_str)
         text.innerHTML = "im boutta **"
+
+
+        //second.style.display = "none";
         clearInterval(myInterval);
     }
+
 }
-// // Iterate through comments and create a warning box for each
-// const comments = document.querySelectorAll('.comment');
-// comments.forEach((comment, index) => {
-//     // Create a div element for the warning box
-//     const warningBox = document.createElement('div');
-//     warningBox.className = 'warning-box';
-
-//     // Create a warning message
-//     const warningMessage = document.createElement('p');
-//     warningMessage.textContent = 'This comment may contain hateful content. Click to reveal.';
-
-//     // Create a "View" button
-//     const viewButton = document.createElement('button');
-//     viewButton.textContent = 'View';
-//     viewButton.dataset.commentId = `comment-${index}`; // Add a unique comment ID to the button
-
-//     // Append warning message and "View" button to the warning box
-//     warningBox.appendChild(warningMessage);
-//     warningBox.appendChild(viewButton);
-
-//     // Hide the original comment and append the warning box
-//     comment.style.display = 'none';
-//     comment.parentNode.insertBefore(warningBox, comment);
-// });
-// >>>>>>> a13feb63bae683d8effa40becaf477232e832faf
