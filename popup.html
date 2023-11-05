@@ -1,13 +1,54 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-  <title>Hate Speech Filter</title>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.js" integrity="sha512-+k1pnlgt4F1H8L7t3z95o3/KO+o78INEcXTbnoJQ/F2VqDVhWoaiVml/OEHv9HsVgxUaVW+IbiZPUJQfF/YxZw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/simple-ajax-uploader/2.6.7/SimpleAjaxUploader.min.js" integrity="sha512-sF1OQUX4620btxfaKLxsFeu/euV3FcPyH+uST3mdEjc8vW8R4z1xNiZhcG7wcZQbFkgFhiiBoAyYNMCL3jufPA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/simple-ajax-uploader/2.6.7/SimpleAjaxUploader.js" integrity="sha512-WahccR1KncvoNJJ94fXVsaFGqrTz7URMDkzSXsKDzQ/Y3yG1zqj1QYUsmAY+w4VZ2R/g1rFAjAe4xgttApP7tA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <link rel="stylesheet" type="text/css" href="popup.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+    integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.js"
+    integrity="sha512-+k1pnlgt4F1H8L7t3z95o3/KO+o78INEcXTbnoJQ/F2VqDVhWoaiVml/OEHv9HsVgxUaVW+IbiZPUJQfF/YxZw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/simple-ajax-uploader/2.6.7/SimpleAjaxUploader.min.js"
+    integrity="sha512-sF1OQUX4620btxfaKLxsFeu/euV3FcPyH+uST3mdEjc8vW8R4z1xNiZhcG7wcZQbFkgFhiiBoAyYNMCL3jufPA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/simple-ajax-uploader/2.6.7/SimpleAjaxUploader.js"
+    integrity="sha512-WahccR1KncvoNJJ94fXVsaFGqrTz7URMDkzSXsKDzQ/Y3yG1zqj1QYUsmAY+w4VZ2R/g1rFAjAe4xgttApP7tA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </head>
+
 <body>
-  <h1>Hate Speech Filter</h1>
+  <div class="popup">
+    <div class="logo">
+      <img src="images/icon128.png" alt="Logo">
+    </div>
+    <div class="toggle-filter">
+      <label for="filter-toggle">Filter Comments</label>
+      <label class="switch">
+        <input type="checkbox" id="filter-toggle">
+        <span class="slider round"></span>
+      </label>
+      
+    </div>
+    <button id="settings-button">Settings</button>
+  </div>
+  <div class="settings-popup" style="display: none;">
+    
+    <div class="child-safety-lock">
+      <label for="child-safety-toggle">Child Safety Lock</label>
+      <label class="switch">
+        <input type="checkbox" id="child-safety-toggle">
+        <span class="slider round"></span>
+      </label>
+    </div>
+    <div class="toxicity-level">
+      <label for="toxicity-slider">Toxicity Level:</label>
+      <input type="range" id="toxicity-slider" min="0" max="100">
+    </div>
+    <button id="back-button">Back</button>
+  </div>
+
+  <script src="popup.js"></script>
 </body>
+
 </html>

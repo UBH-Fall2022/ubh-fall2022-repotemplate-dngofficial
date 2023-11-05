@@ -60,6 +60,7 @@ function changeComment() {
 //     })
 //     .then((data) => console.log(data))
 // }
+
 const fetchInterval = setInterval(fetchData, 3000);
 
 async function fetchData() {

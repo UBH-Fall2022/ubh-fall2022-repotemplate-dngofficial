@@ -1,23 +1,146 @@
-body {
+body,html {
+    margin:0;
+    padding:0;
+  }
+
+.popup {
+    width: 300px;
+    height: 200px;
+    margin: 0;
+    padding: 0;
+    background-color: lightgray;
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 30px;
+    margin-left: 10;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+/* Rounded slider styles */
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: white;
+    border-radius: 34px;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    vertical-align: middle;
+    left: 0;
+    bottom: 0;
+    top: 2px;
+    background-color: #ccc;
+    border-radius: 50%;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+input:checked + .slider {
+    background-color: #2196F3;
+}
+
+input:focus + .slider {
+    box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+    -webkit-transform: translateX(34px);
+    -ms-transform: translateX(34px);
+    transform: translateX(34px);
+}
+
+/* Additional styles */
+.popup {
     width: 200px;
     padding: 10px;
-}
-
-h1 {
-    font-size: 10px;
     text-align: center;
 }
 
-label {
-    display: block;
+.logo img {
+    max-width: fit-content;
+    border-radius: 75px;
+}
+
+.logo {
+    background-color: lightgray;
+    margin: 0;
+    padding: 0;
+    margin-bottom: 15px;
+    border-color: transparent;
+}
+
+.toggle-filter label {
+    padding-right: 3px;
+    font-weight: bolder;
+    font-size: 16px; /* Adjust the font size as needed */
+}
+
+.settings-popup {
+    width: 200px;
+    height: 200px;
+    padding: 10px;
+    position: relative;
+    background-color: lightgray;
+}
+
+.child-safety-lock {
+    display: flex;
+    position: absolute;
+    align-items: center;
+    padding-right: 10px;
+    top: 50px;
+}
+
+.toxicity-level {
     margin-top: 10px;
+    top: 100px;
+    position: absolute;
+
 }
 
-input[type="range"] {width: 100%;}
+.toggle-filter{
+    margin-left: 5px;
+    margin-bottom: 5px;
+}
 
-#classification-result {
+#toxicity-slider {
+    width: 94%; /* Adjust the width as needed */
+    /* Add any other desired styles */
+}
+
+.settings-popup button{
+    position: absolute;
+    bottom: 8px;
+    left: 85px;
+}
+
+
+.child-safety-lock label {
+    margin-left: 10px;
     font-weight: bold;
-    text-align: center;
-    margin-top: 20px;
-    color: red; /* Adjust styling as needed */
+    
+}
+
+.toxicity-level label{
+    margin-left: 10px;
+    font-weight: bold;
 }
