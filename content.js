@@ -58,7 +58,7 @@
 //     .then((data) => console.log(data))
 // }
 
-const fetchInterval = setInterval(fetchData, 3000);
+// const fetchInterval = setInterval(fetchData, 3000);
 
 // async function fetchData() {
 //     const currentUrl = window.location.href;

@@ -33,5 +33,8 @@ def main(data):
     input_data = {"inputs": modifiedData}
     output = query(input_data)
     new_dict = getScore(output)
-    print(new_dict)
-    return new_dict
+    out_dict = {}
+    for keys in new_dict.keys():
+        if new_dict[keys] < 0.7:
+            out_dict[keys] = new_dict[keys]
+    return out_dict

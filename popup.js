@@ -44,4 +44,29 @@ document.addEventListener('DOMContentLoaded', function () {
     filterButton.addEventListener('click', showFilterPage);
 
     backButton.addEventListener('click', hideFilterPage);
+    setDatabase();
 });
+
+function setDatabase() {
+    const firebaseConfig = {
+        apiKey: "AIzaSyDb-PwpSGh9MTLFnUr4o9o0f5cMoNEU-Dg",
+        authDomain: "ub-hackathon-2023.firebaseapp.com",
+        projectId: "ub-hackathon-2023",
+        storageBucket: "ub-hackathon-2023.appspot.com",
+        messagingSenderId: "529481299548",
+        appId: "1:529481299548:web:4365f31748b6ece11ed899",
+        measurementId: "G-3ZSN7JL1QL"
+    };
+
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+
+    const db = firebase.database();
+    console.log("CONNECTED")
+    db.ref("/Comments").
+        db.ref('/Comments').on('value', (snapshot) => {
+            const name = snapshot.val();
+            console.log(name);
+        });
+
+}
