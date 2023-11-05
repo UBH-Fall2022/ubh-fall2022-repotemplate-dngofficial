@@ -25,7 +25,9 @@
 //         revealComment(e.target.dataset.commentId);
 //     }
 // });a
-
+window.onload=()=>{
+    
+}
 const myInterval = setInterval(changeComment, 1000)
 function changeComment() {
 
@@ -50,3 +52,34 @@ function changeComment() {
     }
 
 }
+
+// function readData(){
+//     fetch("./HATESPEECH.json")
+//     .then((res) => {
+//         return res.json();
+//     })
+//     .then((data) => console.log(data))
+// }
+const fetchInterval = setInterval(fetchData, 3000);
+
+async function fetchData() {
+    const currentUrl = window.location.href;
+    const flaskEndpoint = 'http://10.84.33.200:5000/' + '?url=' + encodeURIComponent(currentUrl);
+
+    try {
+        const response = await fetch(flaskEndpoint);
+        if (response.ok) {
+            const data = await response.json();
+            // Handle the received data
+            console.log(data);
+        } else {
+            throw new Error('Request failed');
+        }
+    } catch (error) {
+        console.error('Error:', error);
+        // Optionally, you can retry the request or handle errors as needed
+    }
+}
+
+
+  
