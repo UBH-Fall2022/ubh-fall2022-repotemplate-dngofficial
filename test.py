@@ -5,7 +5,7 @@ import requests
 url = 'https://youtubefetch.onrender.com/url'
 
 # Define the data to be posted
-data = {'key1': 'value1', 'key2': 'value2'}
+data = {"userUrl": "KB_7X3iIHQ4"}
 
 # Send a POST request with the data
 response = requests.post(url, data=data)

@@ -1,3 +1,6 @@
+
+
+
 // console.log("Content script is running!");
 // const warning = document.createElement("div");
 // warning.textContent = "Test Warning Message";
@@ -25,30 +28,30 @@
 //         revealComment(e.target.dataset.commentId);
 //     }
 // });
-const myInterval = setInterval(changeComment, 1000)
-function changeComment() {
+// const myInterval = setInterval(changeComment, 1000)
+// function changeComment() {
 
-    var second = document.querySelector("ytd-comment-thread-renderer:nth-child(2)")
-    var commentRenderer = second.firstElementChild
-    var mainBody = commentRenderer.children[2]
-    var text = mainBody.children[1].children[1].children[1].children[0].children[1]
-    var text_str = text.innerHTML
+//     var second = document.querySelector("ytd-comment-thread-renderer:nth-child(2)")
+//     var commentRenderer = second.firstElementChild
+//     var mainBody = commentRenderer.children[2]
+//     var text = mainBody.children[1].children[1].children[1].children[0].children[1]
+//     var text_str = text.innerHTML
 
-    if (second != null) {
+//     if (second != null) {
 
-        console.log(second)
-        console.log(commentRenderer)
-        console.log(mainBody)
-        console.log(text)
-        console.log(text_str)
-        text.innerHTML = "im boutta **"
+//         console.log(second)
+//         console.log(commentRenderer)
+//         console.log(mainBody)
+//         console.log(text)
+//         console.log(text_str)
+//         text.innerHTML = "im boutta **"
 
 
-        //second.style.display = "none";
-        clearInterval(myInterval);
-    }
+//         //second.style.display = "none";
+//         clearInterval(myInterval);
+//     }
 
-}
+// }
 
 // function readData(){
 //     fetch("./HATESPEECH.json")
@@ -57,33 +60,24 @@ function changeComment() {
 //     })
 //     .then((data) => console.log(data))
 // }
-const fetchInterval = setInterval(fetchData, 3000);
+// const fetchInterval = setInterval(fetchData, 3000);
 
-async function fetchData() {
-    const currentUrl = window.location.href;
-    const flaskEndpoint = 'https://youtubefetch.onrender.com/';
+// async function fetchData() {
+//     const currentUrl = window.location.href;
+//     const flaskEndpoint = 'https://youtubefetch.onrender.com/';
 
-    try {
-        const response = await fetch(flaskEndpoint);
-        if (response.ok) {
-            const data = await response.json();
-            // Handle the received data
-            console.log(data);
-        } else {
-            throw new Error('Request failed');
-        }
-    } catch (error) {
-        console.error('Error:', error);
-        // Optionally, you can retry the request or handle errors as needed
-    }
-}
+//     try {
+//         const response = await fetch(flaskEndpoint);
+//         if (response.ok) {
+//             const data = await response.json();
+//             // Handle the received data
+//             console.log(data);
+//         } else {
+//             throw new Error('Request failed');
+//         }
+//     } catch (error) {
+//         console.error('Error:', error);
+//         // Optionally, you can retry the request or handle errors as needed
+//     }
+// }
 
-
-
-// content.js
-
-// Establish a connection with the background script
-var port = chrome.runtime.connect({ name: "content-script" });
-
-// Send a message to the background script to call the function
-port.postMessage({ action: "callBackgroundFunction", message: videoId });
