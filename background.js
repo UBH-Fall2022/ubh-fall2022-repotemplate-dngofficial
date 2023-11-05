@@ -37,3 +37,39 @@ chrome.runtime.onConnect.addListener(function (port) {
         }
     });
 });
+// chrome.runtime.onInstalled.addListener(function () {
+//     console.log("STARTED")
+//     chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
+//         var activeTab = tabs[0];
+//         var tabUrl = activeTab.url;
+
+//         console.log("Active tab URL:", tabs);
+
+//         // Add your initialization logic here, using the tabUrl if needed
+//     });
+// })
+chrome.tabs.onActivated.addListener(function (activeInfo) {
+    // Get the URL of the active tab
+    chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
+        var url = tabs[0].url;
+
+        // Store the URL in a variable or object
+        url = url.split("=")[1]
+        if (url.includes("&")) {
+            url = url.split("&")[0]
+        }
+        var videoId = url
+        console.log(videoId)
+        url = "https://youtubefetch.onrender.com/url"
+        fetch(url, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ userUrl: videoId }),
+        })
+            .then((response) => response.json())
+            .then((data) => console.log(data))
+            .catch((error) => console.error(error));
+    });
+});

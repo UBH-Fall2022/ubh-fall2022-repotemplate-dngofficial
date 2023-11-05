@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "ub-hackathon-2023",
+  "private_key_id": "e169a17ddfc83bb9a586e05c009ff08c22ffadf4",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQCejXcEPKBGqvIb\nENPPqagsdnLCxM3ibORvTDHY3gM72/eBOnES1PtEZd5c/vFRmENMi44FY1l7uSq1\nAFYvnvfmqD2qlU2TYVs0SrHUaVufhQArzPC08LR2a8YLqS35w58G83z3Hvww1pUW\nK7qPhVGSa1lSAXYt624wckskXzorQfF38WLaoat1W9jRBxAKmIji5Ulhg0MrT6hZ\nG/Q/5kCg+vkuzYgx8P23S1RHsMEZaK/Qz3dEuhRoGOcCE04Ob273Q43cI+6Z+QUd\niBY1K8u51xOnKzDK87VIHU6exG05YvXjJipWl9grp5QNBm+lgos3cuzGImF3Tur7\n9f67t7NzAgMBAAECggEAAoWoj4IxYH5mpISTgfmmabKmp69+wOvPhG+3WUZK0eBx\nYvZdhxmpN5DRRTRu/UfJRkXwB+jpKv0qjz+Gn3JNajdh571BQydozn+jrYfRg8uX\nUZsMdyxfCoUzXMsfppn0hSVJZxrwkwxOyc//QzoxLn2TqajJSvi0Q4QF6vmy0K5Q\n72dZkk72sR5sPTsWxeIVeMQHz5lL1Qgp3fylkjjoE+JXMkVzbJSp0deOqrWSXmFn\ny6g25k+gOXrEVy7U4seK9dcXQF7ayx3QhKc3Ibiu+ImYk6wzrnA1UxgYQqOQh3gY\nKge2C4ap/vMXRZ/LwMvfmyLS+jqF5vhCF/EqMEzo4QKBgQDWiC2TmDECXBEbWiP7\nfCDnMpn7d14N2RJi0g9qJSyw2aT91Mxvhn7QgS1k1woVFwnHscjlqo685ElkLbI6\ng094FCFtx0VU7W1fySQdjVK7wlsi75JWYsxFZbFRHmG7h4plWEbXI6PPvkVgeCHi\n6i46SifL/fTyn4rm8yWRnhqwYQKBgQC9MzmQO80decUwOkZo6hkAosmgwrTB02gl\nsKsoxUYyJcZuIAPfUqc+J2nP8USM1ZxgjgSXHwNOZzRb64rtk51EBd40WZnszepm\neSruPBdD+NF9ujrWkPHW8mc8zK0PACZ/kWkRVGvcz9VQ/xUUIyvx5DmK2jnssiey\n8wSy/K8EUwKBgQDKuy22yJ+nxzEzU9+lDAxb72msRYVQOM4zLKb8e9zb0xEj/jCj\nQ8obZ7dqD/yrKXZIjC15O9BfmKvyS2yd9vDmXL+qaiGOvEAbwIyskJyaanSNczAr\nCnpXKl6Cdd+Nw+x5EQ8Ax+FJtFkDbQM42GyPEPzCvV742OP+k8/w6CP4gQKBgEmb\nmUSVD3rtOhtGQMhmcy29J4aE2cAi2Hz5W82z2lh+O9HyYK9Mv8Y9nTwKWKoWHQ2v\nkvecWDPzkPpGDDnb2S5yvf1N8sWfYxdVAq/G7yJBtnccsfFyWLRQgHu2AYo5e8Db\nuK3GU2SH8yzc4L2B5YHpUb3Eow6ETU+gnm5oQksDAoGBALk4pYpucCOjb38SB7Yu\nWkOA536LH65RXRvo2D6cE3HhRQh0scK1trjLjjKHgBhC4d7aGQMkhEPtMaaebfc9\n20NO7/hlRAjWCagrvzuPlwuZxrmE2xbJXasXiyeRLiWr+9jVckEO2lJrHiLLs7Vv\nmCFh7u9SUO5H2w678gIDqgQj\n-----END PRIVATE KEY-----\n",
+  "client_email": "tirth-desai@ub-hackathon-2023.iam.gserviceaccount.com",
+  "client_id": "104585393332943922357",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/tirth-desai%40ub-hackathon-2023.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}
