@@ -7,12 +7,6 @@ API_TOKEN="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"
 API_URL = "https://api-inference.huggingface.co/models/michellejieli/inappropriate_text_classifier"
 ###Note: This is an Open Soruce data called hugging face
 headers = {"Authorization": "Bearer {}".format(API_TOKEN)}
-def readInfo(web_in):
-	url_in=urlopen(web_in)
-	print(type(json.loads(url_in)))###Helps me figure out what type this is. If Dict thats amazing
-	return json.loads(url_in)
-	###This should import a JSON File from the Server as dictionary.
-	###We need to do this because we will not have access to this when transporting data between JavaScript and Python
 def writeFile(dict_in,fileOut):
 	##Takes a dict in and writes to this JSON file name
 	json_obj=json.dumps(dict_in)
