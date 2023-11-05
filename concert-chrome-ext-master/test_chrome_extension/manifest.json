@@ -1,0 +1,28 @@
+{
+    "name": "Testing youtube extensions",
+    "version": "1.0.0",
+    "description": "Testing grounds for basic youtube functions ",
+    "manifest_version": 3,
+    "author": "Tiffany J",
+    "background": {
+      "service_worker": "background.js"
+    },
+    "action": {
+        "default_popup": "popup.html",
+        "default_title": "Upcoming Toronto Concerts"
+    },
+    "content_scripts": [
+        {
+          "matches": ["https://www.youtube.com/*"],
+          "js": [
+            "content.js"
+          ]
+        }
+      ],
+
+    "permissions": [
+        "activeTab",
+        "storage"
+     ]
+  
+}

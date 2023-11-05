@@ -5,15 +5,45 @@ document.addEventListener('DOMContentLoaded', function () {
     const backButton = document.getElementById('back-button');
     const toxicitySlider = document.getElementById('toxicity-slider');
     const filterButton = document.getElementById('filter-button');
+    const backButton2 = document.getElementById('back-button2');
     const filterPage = document.querySelector('.filter');
+    document.querySelector('#child-safety-toggle').addEventListener('change', () => cToggle());
+    document.querySelector('#filter-toggle').addEventListener('change', () => fToggle());
+    var cToggleValue = false;
+    var fToggleValue = false;
 
-    // Function to show the settings popup and hide the main page
+
+    function cToggle() {
+        console.log("Toggled!");
+        document.querySelector("#test").value += "a";
+        chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
+            if (cToggleValue == false) {
+                chrome.tabs.sendMessage(tabs[0].id, { message: "lock_child" });
+                cToggleValue = true;
+            } else {
+                chrome.tabs.sendMessage(tabs[0].id, { message: "unlock_child" });
+                cToggleValue = false;
+            }
+        })
+    }
+
+    function fToggle() {
+        fToggleValue = !fToggleValue;
+    }
+
+    const toxicityLevelValue = document.getElementById('toxicity-level-value');
+
+    // Add an input event listener to the toxicity slider
+    toxicitySlider.addEventListener('input', function () {
+        const value = parseFloat(toxicitySlider.value).toFixed(2);
+        toxicityLevelValue.textContent = value;
+    });
+
     function showSettingsPopup() {
         mainPage.style.display = 'none';
         settingsPopup.style.display = 'block';
     }
 
-    // Function to hide the settings popup and show the main page
     function hideSettingsPopup() {
         settingsPopup.style.display = 'none';
         mainPage.style.display = 'block';
@@ -21,7 +51,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function showFilterPage() {
         settingsPopup.style.display = 'none';
-        filterPage.style.disply = 'block';
+        filterPage.style.display = 'block';
     }
 
     function hideFilterPage() {
@@ -29,44 +59,47 @@ document.addEventListener('DOMContentLoaded', function () {
         settingsPopup.style.display = 'block';
     }
 
-    // Add a click event listener to the "Settings" button
     settingsButton.addEventListener('click', showSettingsPopup);
 
-    // Add a click event listener to the "Back" button inside the settings popup
     backButton.addEventListener('click', hideSettingsPopup);
 
-    // Add an input event listener to the toxicity slider
     toxicitySlider.addEventListener('input', function () {
         const toxicityLevel = toxicitySlider.value;
-        // You can update UI or make requests based on the value
     });
 
     filterButton.addEventListener('click', showFilterPage);
 
-    backButton.addEventListener('click', hideFilterPage);
-    setDatabase();
+    backButton2.addEventListener('click', hideFilterPage);
+
+
+    const wordInput = document.getElementById('word-input');
+    const addButton = document.getElementById('add-button');
+    const wordList = document.getElementById('word-list');
+
+    addButton.addEventListener('click', addWord);
+
+    function addWord() {
+        const word = wordInput.value.trim();
+        if (word) {
+            const wordItem = document.createElement('div');
+            wordItem.className = 'word-item';
+
+            const wordText = document.createElement('span');
+            wordText.className = 'remove-button';
+            wordText.textContent = word;
+            wordItem.appendChild(wordText);
+
+            wordText.addEventListener('click', function () {
+                const wordValue = wordItem.querySelector('.remove-button').textContent;
+                console.log('Removed: ' + wordValue);
+
+                wordList.removeChild(wordItem);
+            });
+            wordList.appendChild(wordItem);
+            wordInput.value = '';
+        }
+    }
+
+
+
 });
-
-function setDatabase() {
-    const firebaseConfig = {
-        apiKey: "AIzaSyDb-PwpSGh9MTLFnUr4o9o0f5cMoNEU-Dg",
-        authDomain: "ub-hackathon-2023.firebaseapp.com",
-        projectId: "ub-hackathon-2023",
-        storageBucket: "ub-hackathon-2023.appspot.com",
-        messagingSenderId: "529481299548",
-        appId: "1:529481299548:web:4365f31748b6ece11ed899",
-        measurementId: "G-3ZSN7JL1QL"
-    };
-
-    // Initialize Firebase
-    firebase.initializeApp(firebaseConfig);
-
-    const db = firebase.database();
-    console.log("CONNECTED")
-    db.ref("/Comments").
-        db.ref('/Comments').on('value', (snapshot) => {
-            const name = snapshot.val();
-            console.log(name);
-        });
-
-}
