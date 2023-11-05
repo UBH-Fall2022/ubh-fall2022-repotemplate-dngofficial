@@ -1,81 +1,78 @@
-// console.log("Content script is running!");
-// const warning = document.createElement("div");
-// warning.textContent = "Test Warning Message";
-// document.body.appendChild(warning);
+const negativeWords = [
+    "Abrasive", "Apathetic", "Controlling", "Dishonest", "Impatient", "Anxious", "Betrayed", "Disappointed", "Embarrassed", "Jealous",
+    "Abysmal", "Bad", "Callous", "Corrosive", "Damage", "Despicable", "Don’t", "Enraged", "Fail", "Gawky", "Haggard", "Hurt", "Icky",
+    "Insane", "Jealous", "Lose", "Malicious", "Naive", "Not", "Objectionable", "Pain", "Questionable", "Reject", "Rude", "Sad",
+    "Sinister", "Stuck", "Tense", "Ugly", "Unsightly", "Vice", "Wary", "Yell", "Zero", "Adverse", "Banal", "Can’t", "Corrupt",
+    "Damaging", "Detrimental", "Dreadful", "Eroding", "Faulty", "Ghastly", "Hard", "Hurtful", "Ignorant", "Insidious", "Junky",
+    "Lousy", "Mean", "Nasty", "Noxious", "Odious", "Perturb", "Quirky", "Renege", "Ruthless", "Savage", "Slimy", "Stupid",
+    "Terrible", "Undermine", "Untoward", "Vicious", "Weary", "Yucky", "Alarming", "Barbed", "Clumsy", "Dastardly", "Dirty",
+    "Dreary", "Evil", "Fear", "Grave", "Hard-hearted", "Ignore", "Injure", "Insipid", "Lumpy", "Menacing", "Naughty", "None",
+    "Offensive", "Pessimistic", "Quit", "Repellant", "Scare", "Smelly", "Substandard", "Terrifying", "Unfair", "Unwanted", "Vile",
+    "Wicked", "Angry", "Belligerent", "Coarse", "Crazy", "Dead", "Disease", "Feeble", "Greed", "Harmful", "Ill", "Injurious",
+    "Messy", "Negate", "No one", "Old", "Petty", "Reptilian", "Scary", "Sobbing", "Suspect", "Threatening", "Unfavorable",
+    "Unwelcome", "Villainous", "Woeful", "Annoy", "Bemoan", "Cold", "Creepy", "Decaying", "Disgusting", "Fight", "Grim", "Hate",
+    "Immature", "Misshapen", "Negative", "Nothing", "Oppressive", "Plain", "Repugnant", "Scream", "Sorry", "Suspicious", "Unhappy",
+    "Unwholesome", "Vindictive", "Worthless", "Anxious", "Beneath", "Cold-hearted", "Criminal", "Deformed", "Disheveled", "Filthy",
+    "Grimace", "Hideous", "Imperfect", "Missing", "Never", "Neither", "Poisonous", "Repulsive", "Severe", "Spiteful", "Unhealthy",
+    "Unwieldy", "Wound", "Apathy", "Boring", "Collapse", "Cruel", "Deny", "Dishonest", "Foul", "Gross", "Homely", "Impossible",
+    "Misunderstood", "No", "Nowhere", "Poor", "Revenge", "Shocking", "Sticky", "Unjust", "Unwise", "Appalling", "Broken",
+    "Confused", "Cry", "Deplorable", "Dishonorable", "Frighten", "Grotesque", "Horrendous", "Inane", "Moan", "Nobody", "Prejudice",
+    "Revolting", "Shoddy", "Stinky", "Unlucky", "Upset", "Atrocious", "Contrary", "Cutting", "Depressed", "Dismal", "Frightful",
+    "Gruesome", "Horrible", "Inelegant", "Moldy", "Nondescript", "Rocky", "Sick", "Stormy", "Unpleasant", "Awful", "Contradictory",
+    "Deprived", "Distress", "Guilty", "Hostile", "Infernal", "Monstrous", "Nonsense", "Rotten", "Sickening", "Stressful",
+    "Unsatisfactory"
+  ];
+const myInterval = setInterval(changeComment, 1000)
 
-// // Function to send a message to the content script to reveal a hidden comment
-// function revealComment(commentId) {
-//     chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
-//         chrome.scripting.executeScript({
-//             target: { tabId: tabs[0].id },
-//             function: (commentId) => {
-//                 const comment = document.getElementById(commentId);
-//                 const warningBox = comment.previousElementSibling;
-//                 comment.style.display = 'block'; // Show the original comment
-//                 warningBox.style.display = 'none'; // Hide the warning box
-//             },
-//             args: [commentId],
-//         });
-//     });
-// }
+var nums=[3,10,25]
+var remaining = new Array()
+function changeComment() {
 
-// Add a click event listener to the "View" button
-// document.addEventListener('click', function (e) {
-//     if (e.target && e.target.tagName === 'BUTTON') {
-//         revealComment(e.target.dataset.commentId);
-//     }
-// });
-// const myInterval = setInterval(changeComment, 1000)
-// function changeComment() {
+    for(i = 0; i<nums.length; i++){
 
-//     var second = document.querySelector("ytd-comment-thread-renderer:nth-child(2)")
-//     var commentRenderer = second.firstElementChild
-//     var mainBody = commentRenderer.children[2]
-//     var text = mainBody.children[1].children[1].children[1].children[0].children[1]
-//     var text_str = text.innerHTML
+    var second = document.querySelector("ytd-comment-thread-renderer:nth-child(" +  nums[i] + ")")
+    var commentRenderer = second.firstElementChild
+    var mainBody = commentRenderer.children[2]
+    var text = mainBody.children[1].children[1].children[1].children[0].children[1]
+    var text_str = text.innerHTML
 
-//     if (second != null) {
+    if (second != null) {
 
-//         console.log(second)
-//         console.log(commentRenderer)
-//         console.log(mainBody)
-//         console.log(text)
-//         console.log(text_str)
-//         text.innerHTML = "im boutta **"
+        console.log(second)
+        console.log(commentRenderer)
+        console.log(mainBody)
+        console.log(text)
+        console.log(text_str)
 
 
-//         //second.style.display = "none";
-//         clearInterval(myInterval);
-//     }
+        // censor loop 
+        var replacements = negativeWords
+        replacements.forEach(r => { 
 
-// }
+        var regex = new RegExp(r, "g");
+        var res = text_str.replace(regex, "$&#!@*%$");
 
-// function readData(){
-//     fetch("./HATESPEECH.json")
-//     .then((res) => {
-//         return res.json();
-//     })
-//     .then((data) => console.log(data))
-// }
+        text.innerHTML = res
+        });
+        if (i==nums.length-1){
+            if (remaining.length == 0){
+                clearInterval(myInterval);
+            }else{
+                nums=remaining
+                remaining=[]
+            }
+        }
+    }else{
+        remaining.push(i)
+    }
+    };
 
-const fetchInterval = setInterval(fetchData, 3000);
+}
 
-// async function fetchData() {
-//     const currentUrl = window.location.href;
-//     const flaskEndpoint = 'https://youtubefetch.onrender.com/';
-
-//     try {
-//         const response = await fetch(flaskEndpoint);
-//         if (response.ok) {
-//             const data = await response.json();
-//             // Handle the received data
-//             console.log(data);
-//         } else {
-//             throw new Error('Request failed');
-//         }
-//     } catch (error) {
-//         console.error('Error:', error);
-//         // Optionally, you can retry the request or handle errors as needed
-//     }
-// }
-
+function readData(){
+    fetch("./HATESPEECH.json")
+    .then((res) => {
+        return res.json();
+    })
+    .then((data) => console.log(data))
+}
