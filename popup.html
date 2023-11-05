@@ -38,8 +38,8 @@
       </label>
     </div>
     <div class="toxicity-level">
-      <label for="toxicity-slider">Toxicity Level:</label>
-      <input type="range" id="toxicity-slider" min="0" max="100">
+      <label for="toxicity-slider">Toxicity Level: <span id="toxicity-level-value">0.50</span></label>
+      <input type="range" id="toxicity-slider" min="0.0" max="1.0" step="0.01">
     </div>
     <button id="filter-button">Custom Filter</button>
     <button id="back-button">Back</button>
@@ -54,6 +54,6 @@
     </div>
     <button id="back-button2">Back</button>
   </div>
-  <script src="popup.js"></script>
+  <script src="popup.js"></script>  
 </body>
 </html>
