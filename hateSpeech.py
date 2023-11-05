@@ -1,4 +1,5 @@
-from transformers import pipeline
+import requests
+
 API_TOKEN = "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"
 API_URL = "https://api-inference.huggingface.co/models/michellejieli/inappropriate_text_classifier"
 headers = {"Authorization": "Bearer {}".format(API_TOKEN)}
@@ -10,17 +11,8 @@ def query(payload):
     return response.json()
 
 
-def getScore(in_json):
-    # Note Dict of dict
-    # Parse through and strip just the NSFW
-    score_list = []
-    for arr in in_json:
-        # [[{},{}]]
-        for dict_in in arr:
-            NSFW_SCORE = dict_in[1]['score']
-            score_list.apend(NSFW_SCORE)
-    return score_list
-
-
-output = query("Hi every")
-getScore(output)
+output = query({
+    "inputs":[ "Hello I love you", "Fuck you","HIIII"],
+})
+print(output)
+# Outputs
