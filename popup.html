@@ -28,12 +28,12 @@
         <input type="checkbox" id="filter-toggle">
         <span class="slider round"></span>
       </label>
-      
+
     </div>
     <button id="settings-button">Settings</button>
   </div>
   <div class="settings-popup" style="display: none;">
-    
+
     <div class="child-safety-lock">
       <label for="child-safety-toggle">Child Safety Lock</label>
       <label class="switch">
@@ -45,9 +45,19 @@
       <label for="toxicity-slider">Toxicity Level:</label>
       <input type="range" id="toxicity-slider" min="0" max="100">
     </div>
+    <button id="filter-button">Custom Filter</button>
     <button id="back-button">Back</button>
   </div>
-
+  <div class="filter" style="display: none;">
+    <div>
+      <input type="text" id="word-input" placeholder="Enter a word">
+      <button id="add-button">Add</button>
+    </div>
+    <div class="word-list-container">
+      <div id="word-list"></div>
+    </div>
+    <button id="removebutton">Childlock: On</button>
+  </div>
   <script src="popup.js"></script>
 </body>
 

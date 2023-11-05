@@ -2,21 +2,30 @@ import scrap
 import translateComments
 import generateReply
 import json
+import PyJS
+from javascript import require, globalThis
 
-url = ""
+print(PyJS.require("./passer.mjs"))
 
-numberOfComments = scrap.getCommentData(video_id="KbjSuMyTjG4")
-if numberOfComments > 0:
-    commentFile = open("comments.json", "r")
-    data = json.load(commentFile)
-    translatedComments = {}
+# contentFile = require("./passer.mjs")
+# print(contentFile.getUrl())
 
-    for key in data.keys():
-        translatedComments[key] = translateComments.translateComments(
-            data[key])
+# numberOfComments = scrap.getCommentData(video_id="KbjSuMyTjG4")
+# if numberOfComments > 0:
+#     commentFile = open("comments.json", "r")
+#     data = json.load(commentFile)
+#     translatedComments = {}
 
-    commentFile.close()
-    translatedCommentsFile = open("translatedComments.json", "w")
-    json_string = json.dumps(translatedComments, indent=4)
-    translatedCommentsFile.write(json_string)
-    translatedCommentsFile.close()
+#     for key in data.keys():
+#         translatedComments[key] = translateComments.translateComments(
+#             data[key])
+
+#     commentFile.close()
+#     translatedCommentsFile = open("translatedComments.json", "w")
+#     json_string = json.dumps(translatedComments, indent=4)
+#     translatedCommentsFile.write(json_string)
+#     translatedCommentsFile.close()
+
+
+# def hello():
+#     print("Hello World")
