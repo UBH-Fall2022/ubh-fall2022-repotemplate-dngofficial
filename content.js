@@ -76,3 +76,38 @@ function readData(){
     })
     .then((data) => console.log(data))
 }
+
+function filterComment(commentData, currentToxicityLevel) {
+  for (const commentNumber in commentData) {
+    if (commentData.hasOwnProperty(commentNumber)) {
+      const toxicityScore = parseFloat(commentData[commentNumber]);
+
+      if (toxicityScore > currentToxicityLevel) {
+        // Find the comment number in the format "comment#X"
+        const commentIndex = parseInt(commentNumber.match(/\d+/)[0]);
+        changeComment(commentIndex);
+      }
+    }
+  }
+}
+
+function changeComment(index) {
+  const commentThread = document.querySelector(`ytd-comment-thread-renderer:nth-child(${index})`);
+
+  if (commentThread) {
+    const textElement = commentThread.querySelector("yt-formatted-string#content-text");
+
+    if (textElement) {
+      // Replace each letter of the comment text with black squares
+      const commentText = textElement.textContent;
+      const blackSquareText = '⬛'.repeat(commentText.length);
+      textElement.textContent = blackSquareText;
+    }
+  }
+}
+
+
+
+
+
+
