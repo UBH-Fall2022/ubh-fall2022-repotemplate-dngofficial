@@ -8,7 +8,6 @@
 - [Code of Conduct](https://drive.google.com/file/d/1RH_TtRu6EOHSbOoiSj2h1Q4jswtVILzE/view)
 
 
-###PITCH: We are trying to create a 
-###Why are we pitching to the judges?: We believe this idea is a unique one that has been lacking.  
-###Motivation: When searching up Parental controls, there is a lack of Youtube filters past the age of 13 to 17. Youtube does enforce pre-teen controls for their children however, a person's definition of safety compared to others may vary at a different degree. In addition to this, we've noticed that youtube comments tend to be weaker in terms of translation curses. In this case, we've originally prepared a translator which would scan for curse words in different languages such as Hindi. 
-### 
+##PITCH: We are trying to create a 
+##Why are we pitching to the judges?: We believe this idea is a unique one that has been lacking.  
+##Motivation: When searching up Parental controls, there is a lack of Youtube filters past the age of 13 to 17. Youtube does enforce pre-teen controls for their children however, a person's definition of safety compared to others may vary at a different degree. In addition to this, we've noticed that youtube comments tend to be weaker in terms of translation curses. In this case, we've originally prepared a translator which would scan for curse words in different languages such as Hindi. 
