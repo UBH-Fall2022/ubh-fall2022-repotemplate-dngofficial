@@ -168,13 +168,29 @@ input:checked + .slider:before {
     max-height: 100px; 
     overflow-y: auto; 
     margin-top: 10px;
+    height: 100px;
+    background-color: white;
 }
 
 #word-list {
     font-weight: bolder;
+    font-size: 20px;
+    background-color: white;
 }
 
 #remove-button {
     display: block; 
     margin: 10px auto; 
+}
+
+#del {
+    position: absolute;
+    bottom: 36px;
+    left: 42px;
+}
+
+#back-button2{
+    position: absolute;
+    bottom: 8px;
+    left: 85px;
 }

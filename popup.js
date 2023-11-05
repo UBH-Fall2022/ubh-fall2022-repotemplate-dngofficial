@@ -7,21 +7,24 @@ document.addEventListener('DOMContentLoaded', function () {
     const filterButton = document.getElementById('filter-button');
     const backButton2 = document.getElementById('back-button2');
     const filterPage = document.querySelector('.filter');
-    const wordInput = document.getElementById('word-input');
-    const addButton = document.getElementById('add-button');
-    const wordList = document.getElementById('word-list');
-    // const filterToggle = document.getElementById('filter-toggle');
-    // const childSafetyToggle = document.getElementById('child-safety-toggle');
-    document.querySelector('#child-safety-toggle').addEventListener('change',()=> cToggle())
-    document.querySelector('#filter-toggle').addEventListener('change',()=> fToggle())
+    document.querySelector('#child-safety-toggle').addEventListener('change',()=> cToggle());
+    document.querySelector('#filter-toggle').addEventListener('change',()=> fToggle());
     var cToggleValue = false;
     var fToggleValue = false;
 
 
     function cToggle (){
-        console.log("Toggled!")
-        document.querySelector("#test").value+="a"
-        cToggleValue = !cToggleValue;
+        console.log("Toggled!");
+        document.querySelector("#test").value+="a";
+        chrome.tabs.query({active:true,currentWindow:true}, function(tabs){
+            if(cToggleValue==false){
+                chrome.tabs.sendMessage(tabs[0].id, {message: "lock_child"});
+                cToggleValue=true;
+            } else{
+                chrome.tabs.sendMessage(tabs[0].id, {message: "unlock_child"});
+                cToggleValue=false;
+            }
+        })
     }
 
     function fToggle() {
@@ -56,23 +59,6 @@ document.addEventListener('DOMContentLoaded', function () {
         settingsPopup.style.display = 'block';
     }
 
-    // function filterToggleEvent() {
-    //     filterValue = !filterValue;
-    //     filterToggle.classList.toggle('on', filterValue);
-    //     filterToggle.classList.toggle('off', !filterValue);
-    //     console.log('Filter is now ' + (filterValue ? 'on' : 'off'));
-    // }
-
-    // function childSafetyToggleEvent() {
-    //     childSafetyValue = !childSafetyValue;
-    //     childSafetyToggle.classList.toggle('on', childSafetyValue);
-    //     childSafetyToggle.classList.toggle('off', !childSafetyValue);
-    //     console.log('Child Safety Lock is now ' + (childSafetyValue ? 'on' : 'off'));
-    // }
-
-    // filterToggle.addEventListener('click', filterToggleEvent);
-    // childSafetyToggle.addEventListener('click', childSafetyToggleEvent);
-
     settingsButton.addEventListener('click', showSettingsPopup);
 
     backButton.addEventListener('click', hideSettingsPopup);
@@ -84,5 +70,36 @@ document.addEventListener('DOMContentLoaded', function () {
     filterButton.addEventListener('click', showFilterPage);
 
     backButton2.addEventListener('click', hideFilterPage);
+
+
+    const wordInput = document.getElementById('word-input');
+    const addButton = document.getElementById('add-button');
+    const wordList = document.getElementById('word-list');
+
+    addButton.addEventListener('click', addWord);
+
+    function addWord() {
+        const word = wordInput.value.trim();
+        if (word) {
+        const wordItem = document.createElement('div');
+        wordItem.className = 'word-item';
+
+        const wordText = document.createElement('span');
+        wordText.className = 'remove-button';
+        wordText.textContent = word;
+        wordItem.appendChild(wordText);
+
+        wordText.addEventListener('click', function(){
+            const wordValue = wordItem.querySelector('.remove-button').textContent;
+            console.log('Removed: ' + wordValue);
+
+            wordList.removeChild(wordItem);
+        });
+        wordList.appendChild(wordItem);
+        wordInput.value='';
+    }
+    }
+    
+
 
 });
