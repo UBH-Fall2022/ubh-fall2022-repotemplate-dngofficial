@@ -64,7 +64,7 @@ const fetchInterval = setInterval(fetchData, 3000);
 
 async function fetchData() {
     const currentUrl = window.location.href;
-    const flaskEndpoint = 'http://10.84.33.200:5000/' + '?url=' + encodeURIComponent(currentUrl);
+    const flaskEndpoint = 'https://youtubefetch.onrender.com/';
 
     try {
         const response = await fetch(flaskEndpoint);
