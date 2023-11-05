@@ -1,43 +1,47 @@
-// document.addEventListener('DOMContentLoaded', function () {
-//     // Accessing an element by its ID
-//     var videoIdInp = document.getElementById('videoId');
+document.addEventListener('DOMContentLoaded', function () {
+    const mainPage = document.querySelector('.popup');
+    const settingsPopup = document.querySelector('.settings-popup');
+    const settingsButton = document.getElementById('settings-button');
+    const backButton = document.getElementById('back-button');
+    const toxicitySlider = document.getElementById('toxicity-slider');
+    const filterButton = document.getElementById('filter-button');
+    const filterPage = document.querySelector('.filter');
 
-//     // Getting the active tab
-//     chrome.tabs.query({ active: true }, function (tabs) {
-//         var url = tabs[0].url;
-//         url = url.split("=")[1]
-//         if (url.includes("&")) {
-//             url = url.split("&")[0]
-//         }
-//         var videoId = url
-//         videoIdInp.value = videoId
+    // Function to show the settings popup and hide the main page
+    function showSettingsPopup() {
+        mainPage.style.display = 'none';
+        settingsPopup.style.display = 'block';
+    }
 
+    // Function to hide the settings popup and show the main page
+    function hideSettingsPopup() {
+        settingsPopup.style.display = 'none';
+        mainPage.style.display = 'block';
+    }
 
-//         url = "https://youtubefetch.onrender.com/url";
+    function showFilterPage() {
+        settingsPopup.style.display = 'none';
+        filterPage.style.disply = 'block';
+    }
 
-//         fetch(url, {
-//             method: "POST",
-//             headers: {
-//                 "Content-Type": "application/json",
-//             },
-//             body: JSON.stringify({ userUrl: videoId }),
-//         })
-//             .then((response) => response.json())
-//             .then((data) => console.log(data))
-//             .catch((error) => console.error(error));
-//     });
-// });
+    function hideFilterPage() {
+        filterPage.style.display = 'none';
+        settingsPopup.style.display = 'block';
+    }
 
+    // Add a click event listener to the "Settings" button
+    settingsButton.addEventListener('click', showSettingsPopup);
 
+    // Add a click event listener to the "Back" button inside the settings popup
+    backButton.addEventListener('click', hideSettingsPopup);
 
-// // const myInterval = setInterval(checkUrl, 1000)
+    // Add an input event listener to the toxicity slider
+    toxicitySlider.addEventListener('input', function () {
+        const toxicityLevel = toxicitySlider.value;
+        // You can update UI or make requests based on the value
+    });
 
-// // function checkUrl() {
-// //     console.log("CHECKING")
-// //     if (document.getElementById("videoId").value != null) {
-// //         var videoId = document.getElementById("videoId").value
-// //         console.log(videoId)
-// //         clearInterval(myInterval)
-// //     }
-// // }
+    filterButton.addEventListener('click', showFilterPage);
 
+    backButton.addEventListener('click', hideFilterPage);
+});
