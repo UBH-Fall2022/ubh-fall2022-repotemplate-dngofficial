@@ -1,0 +1,62 @@
+#word-list {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+
+}
+.word-item {
+  display: block;
+  align-items: center;
+  padding: 5px;
+  border: 1px solid #ccc;
+  margin: 5px;
+}
+
+.wrapper .word-list-container{
+border-top: 1px solid #ccc;
+border-bottom: 1px solid #ccc;
+}
+.word-list-container {
+  overflow-y: scroll;
+  display: flex;
+  justify-content: center;
+  align-items: center;            
+  flex-grow: 1;
+  align-items: center;
+  padding: 5px;
+  border: 1px solid #ccc;
+  margin: 5px;
+  height: 100px;
+  font-size: 18px;
+  padding: 10px 15px;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+.word-text {
+  display: flex;
+  justify-content: center;
+  align-items: center;            
+  flex-grow: 1;
+  align-items: center;
+  padding: 5px;
+  border: 1px solid #ccc;
+  margin: 5px;
+}
+.remove-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5px;
+  border: 1px solid #ccc;
+  margin: 5px;
+  cursor: pointer;
+  right: 50%;
+}
+
+.word-list-container textarea::-webkit-scrollbar{
+width: 4px;
+}
+
+
+
