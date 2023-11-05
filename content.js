@@ -24,9 +24,11 @@ const negativeWords = [
   ];
 const myInterval = setInterval(changeComment, 1000)
 
-var nums=[3,10,25]
+var nums=[3,4,5]
 var remaining = new Array()
 function changeComment() {
+
+  console.log("testing!")
 
     for(i = 0; i<nums.length; i++){
 
@@ -39,9 +41,9 @@ function changeComment() {
     if (second != null) {
 
         console.log(second)
-        console.log(commentRenderer)
-        console.log(mainBody)
-        console.log(text)
+        //console.log(commentRenderer)
+        //console.log(mainBody)
+        //console.log(text)
         console.log(text_str)
 
 
@@ -69,6 +71,17 @@ function changeComment() {
 
 }
 
+chrome.runtime.onMessage.addListener(function(request, sender, sendResponse)
+{
+    if(request.message == "lock_child"){
+    document.body.appendChild(document.createElement('style')).textContent = '#comments { display: none; }';
+    }
+    else if(request.message == "unlock_child")
+    {
+        document.body.appendChild(document.createElement('style')).textContent = '#comments { display: block; }';
+    }
+});
+
 function readData(){
     fetch("./HATESPEECH.json")
     .then((res) => {
@@ -91,7 +104,7 @@ function filterComment(commentData, currentToxicityLevel) {
   }
 }
 
-function changeComment(index) {
+function changeCommdddent(index) {
   const commentThread = document.querySelector(`ytd-comment-thread-renderer:nth-child(${index})`);
 
   if (commentThread) {

@@ -15,7 +15,19 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function cToggle() {
         console.log("Toggled!");
-        document.querySelector("#test").value += "a";
+ devan_ng_test_branch
+        console.log("cToggleValue = " + cToggleValue);
+
+        chrome.tabs.query({active:true,currentWindow:true}, function(tabs){
+            if(cToggleValue==false){
+                console.log("lock!");
+                chrome.tabs.sendMessage(tabs[0].id, {message: "lock_child"});
+                cToggleValue=true;
+            } else{
+                console.log("unlock!");
+
+                chrome.tabs.sendMessage(tabs[0].id, {message: "unlock_child"});
+                cToggleValue=false;
         chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
             if (cToggleValue == false) {
                 chrome.tabs.sendMessage(tabs[0].id, { message: "lock_child" });
