@@ -29,7 +29,7 @@ def getCommentData(video_id):
     comment_threads = get_comments(youtube, video_id)
     data = {}
     for i in range(len(comment_threads)):
-        data["comment#" + str(i+1)] = comment_threads[i]
+        data["comment-" + str(i+1)] = comment_threads[i]
 
     jsonFile = open("comments.json", "w+")
     json_string = json.dumps(data, indent=4)

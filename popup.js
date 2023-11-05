@@ -7,14 +7,15 @@ document.addEventListener('DOMContentLoaded', function () {
     const filterButton = document.getElementById('filter-button');
     const backButton2 = document.getElementById('back-button2');
     const filterPage = document.querySelector('.filter');
-    document.querySelector('#child-safety-toggle').addEventListener('change',()=> cToggle());
-    document.querySelector('#filter-toggle').addEventListener('change',()=> fToggle());
+    document.querySelector('#child-safety-toggle').addEventListener('change', () => cToggle());
+    document.querySelector('#filter-toggle').addEventListener('change', () => fToggle());
     var cToggleValue = false;
     var fToggleValue = false;
 
 
-    function cToggle (){
+    function cToggle() {
         console.log("Toggled!");
+ devan_ng_test_branch
         console.log("cToggleValue = " + cToggleValue);
 
         chrome.tabs.query({active:true,currentWindow:true}, function(tabs){
@@ -27,20 +28,27 @@ document.addEventListener('DOMContentLoaded', function () {
 
                 chrome.tabs.sendMessage(tabs[0].id, {message: "unlock_child"});
                 cToggleValue=false;
+        chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
+            if (cToggleValue == false) {
+                chrome.tabs.sendMessage(tabs[0].id, { message: "lock_child" });
+                cToggleValue = true;
+            } else {
+                chrome.tabs.sendMessage(tabs[0].id, { message: "unlock_child" });
+                cToggleValue = false;
             }
         })
     }
 
     function fToggle() {
-        fToggleValue = !fToggleValue; 
+        fToggleValue = !fToggleValue;
     }
-    
+
     const toxicityLevelValue = document.getElementById('toxicity-level-value');
-  
+
     // Add an input event listener to the toxicity slider
     toxicitySlider.addEventListener('input', function () {
-      const value = parseFloat(toxicitySlider.value).toFixed(2);
-      toxicityLevelValue.textContent = value;
+        const value = parseFloat(toxicitySlider.value).toFixed(2);
+        toxicityLevelValue.textContent = value;
     });
 
     function showSettingsPopup() {
@@ -85,25 +93,25 @@ document.addEventListener('DOMContentLoaded', function () {
     function addWord() {
         const word = wordInput.value.trim();
         if (word) {
-        const wordItem = document.createElement('div');
-        wordItem.className = 'word-item';
+            const wordItem = document.createElement('div');
+            wordItem.className = 'word-item';
 
-        const wordText = document.createElement('span');
-        wordText.className = 'remove-button';
-        wordText.textContent = word;
-        wordItem.appendChild(wordText);
+            const wordText = document.createElement('span');
+            wordText.className = 'remove-button';
+            wordText.textContent = word;
+            wordItem.appendChild(wordText);
 
-        wordText.addEventListener('click', function(){
-            const wordValue = wordItem.querySelector('.remove-button').textContent;
-            console.log('Removed: ' + wordValue);
+            wordText.addEventListener('click', function () {
+                const wordValue = wordItem.querySelector('.remove-button').textContent;
+                console.log('Removed: ' + wordValue);
 
-            wordList.removeChild(wordItem);
-        });
-        wordList.appendChild(wordItem);
-        wordInput.value='';
+                wordList.removeChild(wordItem);
+            });
+            wordList.appendChild(wordItem);
+            wordInput.value = '';
+        }
     }
-    }
-    
+
 
 
 });
