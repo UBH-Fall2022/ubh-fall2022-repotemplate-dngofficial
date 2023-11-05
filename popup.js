@@ -11,13 +11,12 @@ document.addEventListener('DOMContentLoaded', function () {
     document.querySelector('#filter-toggle').addEventListener('change', () => fToggle());
     var cToggleValue = false;
     var fToggleValue = false;
+    const unfilteredArray = []
 
 
     function cToggle() {
         console.log("Toggled!");
- devan_ng_test_branch
         console.log("cToggleValue = " + cToggleValue);
-
         chrome.tabs.query({active:true,currentWindow:true}, function(tabs){
             if(cToggleValue==false){
                 console.log("lock!");
@@ -25,20 +24,14 @@ document.addEventListener('DOMContentLoaded', function () {
                 cToggleValue=true;
             } else{
                 console.log("unlock!");
-
                 chrome.tabs.sendMessage(tabs[0].id, {message: "unlock_child"});
                 cToggleValue=false;
-        chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
-            if (cToggleValue == false) {
-                chrome.tabs.sendMessage(tabs[0].id, { message: "lock_child" });
-                cToggleValue = true;
-            } else {
-                chrome.tabs.sendMessage(tabs[0].id, { message: "unlock_child" });
-                cToggleValue = false;
             }
         })
     }
+   
 
+    
     function fToggle() {
         fToggleValue = !fToggleValue;
     }
@@ -100,18 +93,31 @@ document.addEventListener('DOMContentLoaded', function () {
             wordText.className = 'remove-button';
             wordText.textContent = word;
             wordItem.appendChild(wordText);
+            unfilteredArray.push(wordText)
 
             wordText.addEventListener('click', function () {
                 const wordValue = wordItem.querySelector('.remove-button').textContent;
                 console.log('Removed: ' + wordValue);
 
+                const index = unfilteredArray.indexOf(wordValue);
+                if (index > -1) { // only splice array when item is found
+                array.splice(index, 1); // 2nd parameter means remove one item only
+                }
                 wordList.removeChild(wordItem);
             });
             wordList.appendChild(wordItem);
             wordInput.value = '';
+            chrome.storage.local.set({ key: unfilteredArray }).then(() => {
+                console.log("set array list");
+              });
+              
+
+
+
         }
     }
 
+}
 
+);
 
-});
