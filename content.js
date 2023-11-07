@@ -22,13 +22,18 @@ const negativeWords = [
     "Deprived", "Distress", "Guilty", "Hostile", "Infernal", "Monstrous", "Nonsense", "Rotten", "Sickening", "Stressful",
     "Unsatisfactory"
   ];
+
+var customTestingSwitch = false
 const myInterval = setInterval(changeComment, 1000)
 
-var nums=[3,4,5]
+var nums=[1,2,3,4,5,6,7,8,9,10]
 var remaining = new Array()
 function changeComment() {
 
   console.log("testing!")
+
+  console.log(document.querySelector("#comments"))
+
 
     for(i = 0; i<nums.length; i++){
 
@@ -46,9 +51,13 @@ function changeComment() {
         //console.log(text)
         console.log(text_str)
 
+        var replacements_1 = [
+          "i",
+          "a",
+        ]
 
         // censor loop 
-        var replacements = negativeWords
+        var replacements = replacements_1
         replacements.forEach(r => { 
 
         var regex = new RegExp(r, "g");
@@ -78,7 +87,7 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse)
     }
     else if(request.message == "unlock_child")
     {
-        document.body.appendChild(document.createElement('style')).textContent = '#comments { display: block; }';
+      document.body.appendChild(document.createElement('style')).textContent = '#comments { display: block; }';
     }
 });
 
