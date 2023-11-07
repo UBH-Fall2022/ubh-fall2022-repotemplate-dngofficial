@@ -41,7 +41,7 @@ def handle_snapshot(snapshot):
                 translatedComments[key] = translateComments.translateComments(
                     data[key])
                 count += 1
-                if count == 11:
+                if count == 5:
                     break
 
             commentFile.close()
