@@ -1,5 +1,0 @@
-{
-	"APIKEY": "AIzaSyDb-PwpSGh9MTLFnUr4o9o0f5cMoNEU-Dg",
-	"APIENDPOINTKEY": "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",
-	"APIENDPOINTURL": "https://api-inference.huggingface.co/models/facebook/blenderbot-400M-distill"
-}
