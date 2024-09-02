@@ -2,10 +2,10 @@
 ### Awarded: Best Machine Learning / AI Hack
 <!--Just know that I'm still working on this---->
 <!--Will find an image of us standing with the Hackathon Best Machine LEarning HAck thing later on.-->
-Proof that we won an award
-
 <div>
   <img src=https://github.com/user-attachments/assets/dccb10af-a97a-484c-ac2d-c7ba339a18ee width=800></img>
+  <p>Proof that we won an award</p>
+  
 </div>
 
 - Project Link: https://devpost.com/software/child-safety-youtube-extension
